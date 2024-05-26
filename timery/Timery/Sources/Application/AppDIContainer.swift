@@ -16,8 +16,7 @@ final class AppDIContainer {
         return HomeSceneDIContainer()
     }
     
-//    func makeSettingsSceneDIContainer() -> SettingsSceneDIContainer {
-//        let dependencies = SettingsSceneDIContainer.Dependencies()
-//        return SettingsSceneDIContainer(dependencies: dependencies)
-//    }
+    func makeTestDetailSceneDIContainer() -> TestDetailSceneDIContainer {
+        return TestDetailSceneDIContainer()
+    }
 }

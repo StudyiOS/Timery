@@ -27,7 +27,7 @@ final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
         navigationController.pushViewController(vc, animated: false)
     }
         
-    func showSettings() {
-        
+    func showTestDetail() {
+        appFlowCoordinator?.startTestDetailFlow()
     }
 }

@@ -17,5 +17,6 @@ let package = Package(
     dependencies: [
         .package(path: "../../ViewExtension"),
         .package(path: "../../Home"),
+        .package(path: "../../TestDetail"),
     ]
 )

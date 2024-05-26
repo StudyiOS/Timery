@@ -15,4 +15,8 @@ public final class HomeVM {
     public init(coordinator: HomeFlowCoordinatorProtocol) {
         self.coordinator = coordinator
     }
+    
+    func showTestDetail() {
+        coordinator.showTestDetail()
+    }
 }

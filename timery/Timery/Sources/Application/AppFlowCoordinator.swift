@@ -7,13 +7,14 @@
 
 import UIKit
 import Home
+import TestDetail
 
 final class AppFlowCoordinator {
     var navigationController: UINavigationController
     private let appDIContainer: AppDIContainer
    
     private var homeFlowCoordinator: HomeFlowCoordinatorProtocol?
-//    private var settingsFlowCoordinator: SettingsFlowCoordinatorProtocol?
+    private var testDetailFlowCoordinator: TestDetailFlowCoordinatorProtocol?
     
     init(navigationController: UINavigationController,
          appDIContainer: AppDIContainer) {
@@ -31,12 +32,12 @@ final class AppFlowCoordinator {
         homeFlowCoordinator?.start()
     }
     
-//    func startSettingsFlow() {
-//        let settingsSceneDIContainer = appDIContainer.makeSettingsSceneDIContainer()
-//        settingsFlowCoordinator = settingsSceneDIContainer.makeSettingsFlowCoordinator(
-//            navigationController: navigationController,
-//            appFlowCoordinator: self
-//        )
-//        settingsFlowCoordinator?.start()
-//    }
+    func startTestDetailFlow() {
+        let testDetailSceneDIContainer = appDIContainer.makeTestDetailSceneDIContainer()
+        testDetailFlowCoordinator = testDetailSceneDIContainer.makeTestDetailCoordinator(
+            navigationController: navigationController,
+            appFlowCoordinator: self
+        )
+        testDetailFlowCoordinator?.start()
+    }
 }

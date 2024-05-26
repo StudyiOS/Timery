@@ -9,7 +9,7 @@ import UIKit
 
 public protocol HomeFlowCoordinatorProtocol {
     func start()
-    func showSettings()
+    func showTestDetail()
 }
 
 public protocol HomeFlowCoordinatorDependencies {

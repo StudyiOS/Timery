@@ -11,18 +11,18 @@ import Home
 final class HomeSceneDIContainer: HomeFlowCoordinatorDependencies {
     
     /*
-    struct Dependenceis {
+     struct Dependenceis {
      let apiService: APIService
      let databaseService: DatabaseService
-    }
+     }
      private let dependencies: Dependencies
      
      init(dependencies: Dependencies) {
-       self.dependencies = dependencies
+     self.dependencies = dependencies
      }
      
      func makeDBViewModel(coordinator, databaseService) {
-        ~~
+     ~~
      }
      */
     
@@ -30,7 +30,7 @@ final class HomeSceneDIContainer: HomeFlowCoordinatorDependencies {
         navigationController: UINavigationController,
         appFlowCoordinator: AppFlowCoordinator
     ) -> HomeFlowCoordinatorProtocol {
-        return HomeFlowCoordinator(
+        HomeFlowCoordinator(
             navigationController: navigationController,
             appFlowCoordinator: appFlowCoordinator,
             dependencies: self
@@ -40,7 +40,7 @@ final class HomeSceneDIContainer: HomeFlowCoordinatorDependencies {
     func makeHomeVC(
         coordinator: HomeFlowCoordinatorProtocol
     ) -> HomeVC {
-        return HomeVC(
+        HomeVC(
             viewModel: makeHomeVM(
                 coordinator: coordinator
             )
