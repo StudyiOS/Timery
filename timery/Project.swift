@@ -26,12 +26,12 @@ let infoPlist: [String : Plist.Value] = [
 
 let deploymentTarget: DeploymentTargets = .iOS("17.0")
 
-
 let project = Project(
     name: "Timery",
     packages: [
         .local(path: .relativeToRoot("../ViewExtension")),
         .local(path: .relativeToRoot("../Home")),
+        .local(path: .relativeToRoot("../TestDetail")),
     ],
     targets: [
         .target(
@@ -46,6 +46,7 @@ let project = Project(
             dependencies: [
                 .package(product: "ViewExtension"),
                 .package(product: "Home"),
+                .package(product: "TestDetail"),
             ]
         ),
         .target(
