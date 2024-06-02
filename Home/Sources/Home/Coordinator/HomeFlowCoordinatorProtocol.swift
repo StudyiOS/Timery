@@ -10,6 +10,10 @@ import UIKit
 public protocol HomeFlowCoordinatorProtocol {
     func start()
     func showTestDetail()
+    func getSavedTimersVC() -> UIViewController
+    func getTimeEntriesVC() -> UIViewController
+    func getReportsVC() -> UIViewController
+    func getSettingsVC() -> UIViewController
 }
 
 public protocol HomeFlowCoordinatorDependencies {

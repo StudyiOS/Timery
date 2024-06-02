@@ -30,4 +30,21 @@ final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
     func showTestDetail() {
         appFlowCoordinator?.startTestDetailFlow()
     }
+    
+    // TODO: 각 VC들의 Dependency를 생성 후 가져와야함
+    func getSavedTimersVC() -> UIViewController {
+        SavedTimersVC()
+    }
+    
+    func getTimeEntriesVC() -> UIViewController  {
+        TimeEntriesVC()
+    }
+    
+    func getReportsVC() -> UIViewController {
+        ReportsVC()
+    }
+    
+    func getSettingsVC() -> UIViewController  {
+        SettingsVC()
+    }
 }

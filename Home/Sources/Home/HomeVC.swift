@@ -10,59 +10,41 @@ import SnapKit
 import Then
 import ViewExtension
 
-public final class HomeVC: BaseVC {
+public final class HomeVC: UITabBarController {
     
     private let viewModel: HomeVM
-    
-    private var welcomeLabel: UILabel!
-    private var moveTestButton: UIButton!
-    
+        
     public init(viewModel: HomeVM) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        buildComponents()
-        configureUI()
+        setupTabBar()
+        setAttribute()
     }
     
-    private func buildComponents() {
-        welcomeLabel = .init().then {
-            $0.text = viewModel.welcomeText
-        }
-        
-        moveTestButton = .init().then {
-            $0.setTitle("디테일 페이지로 이동", for: .normal)
-            $0.setTitleColor(.systemBlue, for: .normal)
-        }
-        
-        moveTestButton.addTarget(
-            self,
-            action: #selector(moveTestButtonTapped),
-            for: .touchUpInside
-        )
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
     
-    private func configureUI() {
-        view.backgroundColor = .white
-        
-        [welcomeLabel, moveTestButton].forEach(view.addSubview)
-        
-        welcomeLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        
-        moveTestButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(welcomeLabel.snp.bottom).inset(-12)
-        }
+    private func setAttribute() {
+        let appearanceTabbar = UITabBarAppearance()
+        appearanceTabbar.configureWithOpaqueBackground()
+        appearanceTabbar.backgroundColor = UIColor.white
+        tabBar.standardAppearance = appearanceTabbar
+        tabBar.tintColor = .systemRed
+        tabBar.backgroundColor = .darkGray
     }
     
-    @objc private func moveTestButtonTapped() {
-        viewModel.showTestDetail()
+    private func setupTabBar() {
+        viewControllers = viewModel.tabBarItems
     }
 }
 
@@ -74,6 +56,22 @@ public final class HomeVC: BaseVC {
 
 
 final class MockHomeFlowCoordinator: HomeFlowCoordinatorProtocol {
+    func getSavedTimersVC() -> UIViewController {
+        UIViewController()
+    }
+    
+    func getTimeEntriesVC() -> UIViewController {
+        UIViewController()
+    }
+    
+    func getReportsVC() -> UIViewController {
+        UIViewController()
+    }
+    
+    func getSettingsVC() -> UIViewController {
+        UIViewController()
+    }
+    
     func start() {}
     func showTestDetail() {}
 }
