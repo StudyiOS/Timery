@@ -6,15 +6,12 @@
 //
 
 import UIKit
-import Then
-import SnapKit
-import ViewExtension
+import JimmyKit
 
-final class TimeEntryVC: BaseVC {
+final class TimeEntryVC: UIViewController {
     
-    let label = UILabel().then {
-        $0.text = "Time Entry"
-    }
+    let label = UILabel()
+        .text("Time Entry")
     
     override func viewDidLoad() {
         super.viewDidLoad()

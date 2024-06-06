@@ -4,32 +4,29 @@
 import PackageDescription
 
 let package = Package(
-    name: "TimeEntry",
-    platforms: [
-        .iOS(.v17)
-    ],
+    name: "JimmyKit",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "TimeEntry",
-            targets: ["TimeEntry"]),
+            name: "JimmyKit",
+            targets: ["JimmyKit"]),
     ],
     dependencies: [
-        .package(path: "../ViewExtension"),
-        .package(path: "../JimmyKit")
+        .package(url: "https://github.com/devxoul/Then", from: "3.0.0"),
+        .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.7.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "TimeEntry",
+            name: "JimmyKit",
             dependencies: [
-                "ViewExtension",
-                "JimmyKit"
+                "Then",
+                "SnapKit"
             ]
         ),
         .testTarget(
-            name: "TimeEntryTests",
-            dependencies: ["TimeEntry"]),
+            name: "JimmyKitTests",
+            dependencies: ["JimmyKit"]),
     ]
 )
