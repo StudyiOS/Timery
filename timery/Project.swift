@@ -32,6 +32,7 @@ let project = Project(
         .local(path: .relativeToRoot("../ViewExtension")),
         .local(path: .relativeToRoot("../Home")),
         .local(path: .relativeToRoot("../TestDetail")),
+        .local(path: .relativeToRoot("../TimeEntry"))
     ],
     targets: [
         .target(
@@ -47,6 +48,7 @@ let project = Project(
                 .package(product: "ViewExtension"),
                 .package(product: "Home"),
                 .package(product: "TestDetail"),
+                .package(product: "TimeEntry")
             ]
         ),
         .target(
