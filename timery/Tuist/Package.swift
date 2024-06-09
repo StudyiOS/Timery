@@ -18,5 +18,7 @@ let package = Package(
         .package(path: "../../ViewExtension"),
         .package(path: "../../Home"),
         .package(path: "../../TestDetail"),
+        .package(path: "../../DatabaseManager"),
+        .package(path: "../../Entity"),
     ]
 )
