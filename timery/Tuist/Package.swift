@@ -19,6 +19,7 @@ let package = Package(
         .package(path: .baseModulePath + "UI/Home"),
         .package(path: .baseModulePath + "UI/TestDetail"),
         .package(path: .baseModulePath + "Domain/MyDomainModule"),
+        .package(path: "../../Entity"),
     ]
 )
 

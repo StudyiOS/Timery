@@ -31,6 +31,7 @@ let project = Project(
         .local(path: .relativeToRoot("Modules/UI/ViewExtension")),
         .local(path: .relativeToRoot("Modules/UI/Home")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
+        .local(path: .relativeToRoot("../Entity")),
     ],
     targets: [
         .target(
@@ -46,6 +47,14 @@ let project = Project(
                 .package(product: "ViewExtension"),
                 .package(product: "Home"),
                 .package(product: "TestDetail"),
+                .package(product: "DatabaseManager"),
+                .package(product: "Entity"),
+            ],
+            coreDataModels: [
+                .coreDataModel(
+                    "../Timery/Timery/Resources/Timery.xcdatamodeld",
+                    currentVersion: "Model"
+                )
             ]
         ),
         .target(
