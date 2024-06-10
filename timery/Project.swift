@@ -1,6 +1,5 @@
 import ProjectDescription
 
-
 let baseSettings: [String: SettingValue] = [
     "MARKETING_VERSION": "1.0.0",
     "CURRENT_PROJECT_VERSION": "1.0.0.0"
@@ -29,9 +28,9 @@ let deploymentTarget: DeploymentTargets = .iOS("17.0")
 let project = Project(
     name: "Timery",
     packages: [
-        .local(path: .relativeToRoot("../ViewExtension")),
-        .local(path: .relativeToRoot("../Home")),
-        .local(path: .relativeToRoot("../TestDetail")),
+        .local(path: .relativeToRoot("Modules/UI/ViewExtension")),
+        .local(path: .relativeToRoot("Modules/UI/Home")),
+        .local(path: .relativeToRoot("Modules/UI/TestDetail")),
     ],
     targets: [
         .target(
@@ -41,8 +40,8 @@ let project = Project(
             bundleId: "io.tuist.Timery",
             deploymentTargets: deploymentTarget,
             infoPlist: .extendingDefault(with: infoPlist),
-            sources: ["Timery/Sources/**"],
-            resources: ["Timery/Resources/**"],
+            sources: ["App/Sources/**"],
+            resources: ["App/Resources/**"],
             dependencies: [
                 .package(product: "ViewExtension"),
                 .package(product: "Home"),
@@ -55,7 +54,7 @@ let project = Project(
             product: .unitTests,
             bundleId: "io.tuist.TimeryTests",
             infoPlist: .default,
-            sources: ["Timery/Tests/**"],
+            sources: ["App/Tests/**"],
             resources: [],
             dependencies: [.target(name: "Timery")]
         ),

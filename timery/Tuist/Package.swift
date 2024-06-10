@@ -15,8 +15,8 @@ import PackageDescription
 let package = Package(
     name: "Timery",
     dependencies: [
-        .package(path: "../../ViewExtension"),
-        .package(path: "../../Home"),
-        .package(path: "../../TestDetail"),
+        .package(path: "Timery/Modules/UI/ViewExtension"),
+        .package(path: "Timery/Modules/UI/Home"),
+        .package(path: "Timery/Modules/UI/TestDetail"),
     ]
 )
