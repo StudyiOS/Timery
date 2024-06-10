@@ -1,13 +1,20 @@
-PYTHON_VENV = .venv/bin/python
+# 모듈 생성 명령어 사용 방법: 'make module template=ParentModule name=NewModuleName'
 
-USER_NAME = $(shell python3 scripts/author_name.py)
-CURRENT_DATE = $(shell pipenv run python3 scripts/current_date.py)
+# 기본값 설정(각자 본인의 이름을 AUTHOR에 입력하면 됩니다.)
+AUTHOR=Sam
+CURRENT_DATE=$(shell date +%Y-%m-%d)
 
+# module 명령어
 module:
-	@echo "Enter the template name:" && \
-	read TEMPLATE_NAME && \
-	echo "Enter the module name:" && \
-	read MODULE_NAME && \
-	"Scaffolding new '$$TEMPLATE_NAME' module '$$MODULE_NAME'" && \
-	tuist scaffold '$$TEMPLATE_NAME' --name $$MODULE_NAME --author "$(USER_NAME)" --current-date "$(CURRENT_DATE)" \
-#	tuist edit
+	@echo "Making new module with the following parameters:"
+	@echo "Module Template: $(template)"
+	@echo "Module Name: $(name)"
+	@echo "Author: $(AUTHOR)"
+	@echo "Current Date: $(CURRENT_DATE)"
+	@tuist scaffold $(template) --name $(name) --author $(AUTHOR) --current-date $(CURRENT_DATE)
+	@echo "Successfully made new '$(template)' module, '$(name)'! Generating Tuist..."
+	@tuist generate
+
+# date 값 설정을 위한 명령어
+set-date:
+	$(eval CURRENT_DATE=$(value date))ㄴ

@@ -23,7 +23,7 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "{{ name }}" + "Tests",
+            name: "{{ name }}Tests",
             dependencies: ["{{ name }}"]
         ),
     ]

@@ -37,7 +37,7 @@ enum CoreTemplate: CaseIterable {
             return .file(path: .basePath + "/Sources/Project.swift",
                          templatePath: "Project.stencil")
         case .test:
-            return .file(path: .basePath + "/Tests/" + .testName + "/" + "\(testName).swift",
+            return .file(path: .basePath + "/Tests/" + .testName + "/" + .testName + ".swift",
                          templatePath: "Test.stencil")
         }
     }
