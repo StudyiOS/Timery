@@ -31,6 +31,7 @@ let project = Project(
         .local(path: .relativeToRoot("Modules/UI/ViewExtension")),
         .local(path: .relativeToRoot("Modules/UI/Home")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
+        .local(path: .relativeToRoot("Modules/UI/SampleUIModule")),
     ],
     targets: [
         .target(

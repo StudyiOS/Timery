@@ -23,19 +23,22 @@ let coreTemplate = Template(
 )
 
 enum UITemplate: CaseIterable {
-    case project
-//    case viewController
+    case package
+    case viewController
+    case test
 
     // 템플릿 내부에 추가할 파일.
     var item: Template.Item {
         switch self {
-        case .project:
-            return .file(path: .basePath + "/Sources/Project.swift",
-                         templatePath: "Project.stencil")
-
-//        case .viewController:
-//            return .file(path: .basePath + "/Sources/ViewController.swift",
-//                         templatePath: "ViewController.stencil")
+        case .package:
+            return .file(path: .basePath + "/Package.swift",
+                        templatePath: "Package.stencil")
+        case .viewController:
+            return .file(path: .basePath + "/Sources/ViewController.swift",
+                         templatePath: "ViewController.stencil")
+        case .test:
+            return .file(path: .basePath + "/Tests/" + .testName + "/" + .testName + ".swift",
+                         templatePath: "Test.stencil")
         }
     }
 }
@@ -44,5 +47,9 @@ enum UITemplate: CaseIterable {
 extension String {
     static var basePath: Self {
         return "Modules/UI/\(name)"
+    }
+
+    static var testName: Self {
+        return "\(name)Tests"
     }
 }

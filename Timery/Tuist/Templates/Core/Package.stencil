@@ -1,0 +1,24 @@
+// swift-tools-version: 5.10
+
+import PackageDescription
+
+let package = Package(
+    name: "{{ name }}",
+    platforms: [
+        .iOS(.v17)
+    ],
+    products: [
+        .library(
+            name: "{{ name }}",
+            targets: ["{{ name }}"])
+    ],
+    dependencies: [
+        // Add dependencies here
+    ],
+    targets: [
+        .target(
+            name: "{{ name }}",
+            dependencies: []
+        )
+    ]
+)

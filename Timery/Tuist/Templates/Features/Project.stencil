@@ -1,5 +1,5 @@
 import Foundation
 
 class {{ name }} {
-    // Your code goes here
+    // Your Feature Module code goes here
 }
