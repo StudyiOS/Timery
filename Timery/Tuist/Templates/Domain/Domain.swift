@@ -1,5 +1,5 @@
 //
-//  Features.swift
+//  Domain.swift
 //
 //
 //  Created by 성현관 on 6/5/24.
@@ -13,16 +13,16 @@ let currentDate: Template.Attribute = .required("currentDate")
 
 // 템플릿 선언.
 let coreTemplate = Template(
-    description: "A template for a new Features modules",
+    description: "A template for a new Domain modules",
     attributes: [
         name,
         author,
         currentDate
     ],
-    items: FeaturesTemplate.allCases.map { $0.item }
+    items: DomainTemplate.allCases.map { $0.item }
 )
 
-enum FeaturesTemplate: CaseIterable {
+enum DomainTemplate: CaseIterable {
     case package
     case project
     case test
@@ -46,7 +46,7 @@ enum FeaturesTemplate: CaseIterable {
 // 템플릿을 추가할 기본 경로.
 extension String {
     static var basePath: Self {
-        return "Modules/Features/\(name)"
+        return "Modules/Domain/\(name)"
     }
 
     static var testName: Self {

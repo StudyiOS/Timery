@@ -1,5 +1,0 @@
-import Foundation
-
-class {{ name }} {
-    // Your Feature Module code goes here
-}
