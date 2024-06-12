@@ -25,6 +25,7 @@ let coreTemplate = Template(
 enum CoreTemplate: CaseIterable {
     case package
     case project
+    case infoPlist
     case test
 
     // 템플릿 내부에 추가할 파일.
@@ -36,6 +37,9 @@ enum CoreTemplate: CaseIterable {
         case .project:
             return .file(path: .basePath + "/Sources/Project.swift",
                          templatePath: "Project.stencil")
+        case .infoPlist:
+            return .file(path: .basePath + "/\(name)-Info.plist", 
+                        templatePath: "InfoPlist.stencil")
         case .test:
             return .file(path: .basePath + "/Tests/" + .testName + "/" + .testName + ".swift",
                          templatePath: "Test.stencil")
