@@ -14,9 +14,11 @@ final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
     private let dependencies: HomeFlowCoordinatorDependencies
     private weak var appFlowCoordinator: AppFlowCoordinator?
     
-    init(navigationController: UINavigationController,
-         appFlowCoordinator: AppFlowCoordinator,
-         dependencies: HomeFlowCoordinatorDependencies) {
+    init(
+        navigationController: UINavigationController,
+        appFlowCoordinator: AppFlowCoordinator,
+        dependencies: HomeFlowCoordinatorDependencies
+    ) {
         self.navigationController = navigationController
         self.appFlowCoordinator = appFlowCoordinator
         self.dependencies = dependencies

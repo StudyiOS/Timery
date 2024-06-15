@@ -8,21 +8,21 @@
 import Foundation
 import CoreData
 
-public struct Project {
+public struct ProjectItem {
     public let id: UUID
     public var name: String
-    public var rcolor: Float
-    public var gcolor: Float
-    public var bcolor: Float
-    public var acolor: Float
+    public var rcolor: Float?
+    public var gcolor: Float?
+    public var bcolor: Float?
+    public var acolor: Float?
     
     public init(
-        id: UUID,
+        id: UUID = UUID(),
         name: String,
-        rcolor: Float,
-        gcolor: Float,
-        bcolor: Float,
-        acolor: Float) {
+        rcolor: Float?,
+        gcolor: Float?,
+        bcolor: Float?,
+        acolor: Float?) {
         self.id = id
         self.name = name
         self.rcolor = rcolor
@@ -32,15 +32,15 @@ public struct Project {
     }
 }
 
-extension Project {
-    public func toProjectDB(context: NSManagedObjectContext) -> ProjectDB {
+extension ProjectItem: DatabaseEntity {
+    public func toDB(context: NSManagedObjectContext) -> ProjectDB {
         let projectDB = ProjectDB(context: context)
         projectDB.id = self.id
         projectDB.name = self.name
-        projectDB.rcolor = self.rcolor
-        projectDB.gcolor = self.gcolor
-        projectDB.bcolor = self.bcolor
-        projectDB.acolor = self.acolor
+        projectDB.rcolor = self.rcolor ?? -1
+        projectDB.gcolor = self.gcolor ?? -1
+        projectDB.bcolor = self.bcolor ?? -1
+        projectDB.acolor = self.acolor ?? -1
         return projectDB
     }
     

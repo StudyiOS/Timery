@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Entity
+import DatabaseManager
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        
+        let task = TaskItem(name: "A Task")
+        
+        Task {
+            try await DatabaseManager.shared.createTask(task)
+            let task = try await DatabaseManager.shared.fetchAllTasks()
+        }
+        
         return true
     }
     
