@@ -20,8 +20,8 @@ extension TaskDB {
     @NSManaged public var name: String?
     @NSManaged public var projectId: UUID?
     @NSManaged public var desc: String?
-    @NSManaged public var curTime: Float
-    @NSManaged public var cumulativeTime: Float
+    @NSManaged public var startTime: Date?
+    @NSManaged public var endTime: Date?
     @NSManaged public var lastModifiedDate: Date?
     @NSManaged public var tags: String?
     @NSManaged public var showInWidgets: Bool
