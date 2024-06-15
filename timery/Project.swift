@@ -31,7 +31,6 @@ let project = Project(
         .local(path: .relativeToRoot("Modules/UI/ViewExtension")),
         .local(path: .relativeToRoot("Modules/UI/Home")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
-        .local(path: .relativeToRoot("Modules/UI/TimeryWidget")),
     ],
     targets: [
         .target(
@@ -48,19 +47,6 @@ let project = Project(
                 .package(product: "Home"),
                 .package(product: "TestDetail"),
             ]
-        ),
-        .target(
-            name: "TimeryWidget",
-            destinations: [
-                .iPhone,
-                .iPad
-            ],
-            product: .appExtension,
-            bundleId: "io.tuist.timery.widget.TimeryWidget",
-            infoPlist: "Modules/UI/TimeryWidget/TimeryWidget-Info.plist",
-            sources: ["Modules/UI/TimeryWidget/Sources/**"],
-            resources: [],
-            dependencies: []
         ),
         .target(
             name: "TimeryTests",
