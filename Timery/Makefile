@@ -1,6 +1,6 @@
 # 모듈 생성 명령어 사용 방법: 'make module template=ParentModule name=NewModuleName'
 
-# 기본값 설정(각자 본인의 이름을 AUTHOR에 입력하면 됩니다.)
+# 기본값 설정(각자 본인의 이름을 AUTHOR에 입력하면 됩니다.
 AUTHOR=Sam
 CURRENT_DATE=$(shell date +%Y-%m-%d)
 
@@ -17,4 +17,4 @@ module:
 
 # date 값 설정을 위한 명령어
 set-date:
-	$(eval CURRENT_DATE=$(value date))ㄴ
+	$(eval CURRENT_DATE=$(value date))
