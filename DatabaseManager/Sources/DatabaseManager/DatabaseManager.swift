@@ -2,13 +2,11 @@ import Foundation
 import CoreData
 import Entity
 
-public final class DatabaseManager {
-    public static let shared = DatabaseManager()
-    
-    private init() {}
+public final class DatabaseManager<E: DatabaseEntity>: DatabaseProtocol {
+    public typealias Entity = E
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Timery") // 여기에 .xcdatamodeld 파일 이름을 입력합니다.
+        let container = NSPersistentContainer(name: "Timery")
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -32,63 +30,81 @@ public final class DatabaseManager {
             }
         }
     }
-}
 
-
-extension DatabaseProtocol where Self: DatabaseManager {
-    
     public func create(_ entity: Entity) async throws {
-        try await context.perform {
-            _ = entity.toDB(context: self.context)
+        try await performDatabaseOperation {
+            entity.toDB(context: self.context)
             try self.saveContextIfNeeded()
         }
     }
-    
+
     public func fetch(with id: UUID) async throws -> Entity? {
-        return try await context.perform {
-            let request: NSFetchRequest<Entity.EntityDB> = Entity.EntityDB.fetchRequest() as! NSFetchRequest<Entity.EntityDB>
-            request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-            let results = try self.context.fetch(request)
-            return results.first.map(Entity.init)
-        }
+        return try await performFetchRequest(with: id) { results in
+            return results.map(Entity.init)
+        }.first
     }
-    
+
     public func fetchAll() async throws -> [Entity] {
-        return try await context.perform {
-            let request: NSFetchRequest<Entity.EntityDB> = Entity.EntityDB.fetchRequest() as! NSFetchRequest<Entity.EntityDB>
-            let results = try self.context.fetch(request)
+        return try await performFetchRequest { results in
             return results.map(Entity.init)
         }
     }
-    
+
     public func update(_ entity: Entity) async throws {
-        try await context.perform {
-            let request: NSFetchRequest<Entity.EntityDB> = Entity.EntityDB.fetchRequest() as! NSFetchRequest<Entity.EntityDB>
-            request.predicate = NSPredicate(format: "id == %@", entity.id as CVarArg)
-            let results = try self.context.fetch(request)
-            if let dbObject = results.first {
-                entity.toDB(context: self.context)
+        try await performDatabaseOperation {
+            if let object = try self.fetchDatabaseObject(with: entity.id) {
+                let mirror = Mirror(reflecting: entity)
+                for child in mirror.children {
+                    if let key = child.label {
+                        object.setValue(child.value, forKey: key)
+                    }
+                }
+
                 try self.saveContextIfNeeded()
             }
         }
     }
-    
+
     public func delete(_ entity: Entity) async throws {
-//        try await context.perform {
-//            let request: NSFetchRequest<Entity.EntityDB> = Entity.EntityDB.fetchRequest() as! NSFetchRequest<Entity.EntityDB>
-//            request.predicate = NSPredicate(format: "id == %@", entity.id as CVarArg)
-//            let results = try self.context.fetch(request)
-//            if let dbObject = results.first {
-//                self.context.delete(dbObject)
-//                try self.saveContextIfNeeded()
-//            }
-//        }
+        try await performDatabaseOperation {
+            if let dbObject = try self.fetchDatabaseObject(with: entity.id) {
+                self.context.delete(dbObject)
+                try self.saveContextIfNeeded()
+            }
+        }
     }
-    
+
     private func saveContextIfNeeded() throws {
         if context.hasChanges {
             try context.save()
         }
+    }
+
+    private func performDatabaseOperation(_ operation: @escaping () throws -> Void) async throws {
+        try await context.perform {
+            try operation()
+        }
+    }
+
+    private func performFetchRequest(
+        with id: UUID? = nil,
+        processResults: @escaping ([Entity.EntityDB]) -> [Entity]
+    ) async throws -> [Entity] {
+        return try await context.perform {
+            let request: NSFetchRequest<Entity.EntityDB> = Entity.EntityDB.fetchRequest() as! NSFetchRequest<Entity.EntityDB>
+            if let id = id {
+                request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            }
+            let results = try self.context.fetch(request)
+            return processResults(results)
+        }
+    }
+
+    private func fetchDatabaseObject(with id: UUID) throws -> Entity.EntityDB? {
+        let request: NSFetchRequest<Entity.EntityDB> = Entity.EntityDB.fetchRequest() as! NSFetchRequest<Entity.EntityDB>
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        let results = try self.context.fetch(request)
+        return results.first
     }
 }
 
