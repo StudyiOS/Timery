@@ -15,8 +15,15 @@ import PackageDescription
 let package = Package(
     name: "Timery",
     dependencies: [
-        .package(path: "../../ViewExtension"),
-        .package(path: "../../Home"),
-        .package(path: "../../TestDetail"),
+        .package(path: .baseModulePath + "UI/ViewExtension"),
+        .package(path: .baseModulePath + "UI/Home"),
+        .package(path: .baseModulePath + "UI/TestDetail"),
+        .package(path: .baseModulePath + "Domain/MyDomainModule"),
     ]
 )
+
+extension String {
+    static var baseModulePath: Self {
+        return "Timery/Modules/"
+    }
+}

@@ -1,0 +1,5 @@
+import Foundation
+
+class {{ name }} {
+    // Your Core Module code goes here
+}

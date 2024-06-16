@@ -1,0 +1,10 @@
+import XCTest
+@testable import {{ name }}
+
+class {{ name }}Tests: XCTestCase {
+    func testExample() {
+        // Example test case
+        let viewController = {{ name }}ViewController()
+        XCTAssertNotNil(viewController.view)
+    }
+}

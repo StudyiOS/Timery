@@ -1,0 +1,30 @@
+// swift-tools-version: 5.10
+
+import PackageDescription
+
+let package = Package(
+    name: "{{ name }}",
+    platforms: [
+        .iOS(.v17)
+    ],
+    products: [
+        .library(
+            name: "{{ name }}",
+            targets: ["{{ name }}"])
+    ],
+    dependencies: [
+        .package(path: "../ViewExtension")
+    ],
+    targets: [
+        .target(
+            name: "{{ name }}",
+            dependencies: [
+                "ViewExtension"
+            ]
+        ),
+        .testTarget(
+            name: "{{ name }}Tests",
+            dependencies: ["{{ name }}"]
+        ),
+    ]
+)

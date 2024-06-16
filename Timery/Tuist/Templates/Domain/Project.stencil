@@ -1,0 +1,5 @@
+import Foundation
+
+class {{ name }} {
+    // Your Domain Module code goes here
+}
