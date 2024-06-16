@@ -17,7 +17,7 @@ final class DatabaseTests: XCTestCase {
     override func setUp() async throws {
         removeAllDatabse()
     }
-    
+        
     func testCreate() async throws {
         //Given
         let newTask1 = TaskItem(name: "새로운Task1 - \(Date())", startTime: Date())
