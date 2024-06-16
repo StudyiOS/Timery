@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Entity
+import DatabaseManager
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
