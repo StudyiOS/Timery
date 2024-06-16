@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public extension Stylable where Self: UIControl {
 
     @available(iOS 14.0, *)
