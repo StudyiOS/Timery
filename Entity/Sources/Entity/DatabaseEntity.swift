@@ -12,5 +12,6 @@ public protocol DatabaseEntity {
     associatedtype EntityDB: NSManagedObject
     var id: UUID { get }
     init(from dbObject: EntityDB)
+    @discardableResult
     func toDB(context: NSManagedObjectContext) -> EntityDB
 }

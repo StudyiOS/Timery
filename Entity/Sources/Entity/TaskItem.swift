@@ -49,6 +49,7 @@ public struct TaskItem {
 }
 
 extension TaskItem: DatabaseEntity {
+    @discardableResult
     public func toDB(context: NSManagedObjectContext) -> TaskDB {
         let taskDB = TaskDB(context: context)
         taskDB.id = self.id
