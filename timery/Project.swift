@@ -30,6 +30,8 @@ let project = Project(
     packages: [
         .local(path: .relativeToRoot("Modules/UI/Home")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
+        .local(path: .relativeToRoot("Modules/Core/Entity")),
+        .local(path: .relativeToRoot("Modules/Core/DatabaseManager")),
         .local(path: .relativeToRoot("Modules/UI/UIFusionKit"))
     ],
     targets: [
@@ -45,7 +47,15 @@ let project = Project(
             dependencies: [
                 .package(product: "Home"),
                 .package(product: "TestDetail"),
+                .package(product: "DatabaseManager"),
+                .package(product: "Entity"),
                 .package(product: "UIFusionKit"),
+            ],
+            coreDataModels: [
+                .coreDataModel(
+                    "../Timery/Timery/Resources/Timery.xcdatamodeld",
+                    currentVersion: "Model"
+                )
             ]
         ),
         .target(
