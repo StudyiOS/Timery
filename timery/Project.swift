@@ -28,11 +28,11 @@ let deploymentTarget: DeploymentTargets = .iOS("17.0")
 let project = Project(
     name: "Timery",
     packages: [
-        .local(path: .relativeToRoot("Modules/UI/ViewExtension")),
         .local(path: .relativeToRoot("Modules/UI/Home")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
         .local(path: .relativeToRoot("Modules/Core/Entity")),
         .local(path: .relativeToRoot("Modules/Core/DatabaseManager")),
+        .local(path: .relativeToRoot("Modules/UI/UIFusionKit"))
     ],
     targets: [
         .target(
@@ -45,11 +45,11 @@ let project = Project(
             sources: ["App/Sources/**"],
             resources: ["App/Resources/**"],
             dependencies: [
-                .package(product: "ViewExtension"),
                 .package(product: "Home"),
                 .package(product: "TestDetail"),
                 .package(product: "DatabaseManager"),
                 .package(product: "Entity"),
+                .package(product: "UIFusionKit"),
             ],
             coreDataModels: [
                 .coreDataModel(
