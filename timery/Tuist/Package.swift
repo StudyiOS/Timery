@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
         .package(path: .baseModulePath + "UI/Home"),
         .package(path: .baseModulePath + "UI/TestDetail"),
-        .package(path: .baseModulePath + "Domain/MyDomainModule"),
+//        .package(path: .baseModulePath + "Domain/MyDomainModule"),
         .package(path: .baseModulePath + "Core/Entity"),
         .package(path: .baseModulePath + "Core/DatabaseManager"),
     ]
@@ -22,6 +22,6 @@ let package = Package(
 
 extension String {
     static var baseModulePath: Self {
-        return "Timery/Modules/"
+        return "../Modules/"
     }
 }
