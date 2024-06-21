@@ -53,7 +53,7 @@ let project = Project(
             ],
             coreDataModels: [
                 .coreDataModel(
-                    "../Timery/Timery/Resources/Timery.xcdatamodeld",
+                    "App/Resources/Timery.xcdatamodeld",
                     currentVersion: "Model"
                 )
             ]
