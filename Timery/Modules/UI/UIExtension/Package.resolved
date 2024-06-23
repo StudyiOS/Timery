@@ -1,4 +1,5 @@
 {
+  "originHash" : "46d2756eb8c55bb18fdafcd152feb3cf9d0b50687104f67a265d2d00d05bced4",
   "pins" : [
     {
       "identity" : "reactorkit",
@@ -46,5 +47,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
