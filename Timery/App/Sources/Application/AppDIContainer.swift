@@ -10,7 +10,7 @@ import Foundation
 final class AppDIContainer {
     lazy var appConfiguration = AppConfiguration()
     
-//    let apiDataTranserferService = DataTransferService()
+    //    let apiDataTranserferService = DataTransferService()
     
     func makeHomeSceneDIConatiner() -> HomeSceneDIContainer {
         return HomeSceneDIContainer()
@@ -20,7 +20,19 @@ final class AppDIContainer {
         return TestDetailSceneDIContainer()
     }
     
+    func makeTimeEntriesSceneDIContainer() -> TimeEntriesSceneDIContainer {
+        return TimeEntriesSceneDIContainer()
+    }
+    
+    func makeSavedTimersSceneDIContainer() -> SavedTimersSceneDIContainer {
+        return SavedTimersSceneDIContainer()
+    }
+    
     func makeReportsSceneDIContainer() -> ReportsSceneDIContainer {
         return ReportsSceneDIContainer()
+    }
+    
+    func makeSettingsSceneDIContainer() -> SettingsSceneDIContainer {
+        return SettingsSceneDIContainer()
     }
 }

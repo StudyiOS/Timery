@@ -34,13 +34,18 @@ final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
         appFlowCoordinator?.startTestDetailFlow()
     }
     
-    // TODO: 각 VC들의 Dependency를 생성 후 가져와야함
     func getSavedTimersVC() -> UIViewController {
-        SavedTimersVC()
+        guard let appFlowCoordinator else {
+            fatalError("appFlowCoordinator nil")
+        }
+        return appFlowCoordinator.createSavedTimersVC()
     }
     
     func getTimeEntriesVC() -> UIViewController  {
-        TimeEntriesVC()
+        guard let appFlowCoordinator else {
+            fatalError("appFlowCoordinator nil")
+        }
+        return appFlowCoordinator.createTimeEntriesVC()
     }
     
     func getReportsVC() -> UIViewController {
@@ -51,6 +56,9 @@ final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
     }
     
     func getSettingsVC() -> UIViewController  {
-        SettingsVC()
+        guard let appFlowCoordinator else {
+            fatalError("appFlowCoordinator nil")
+        }
+        return appFlowCoordinator.createSettingsVC()
     }
 }
