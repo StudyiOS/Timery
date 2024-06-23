@@ -7,6 +7,7 @@
 
 import UIKit
 import UIFusionKit
+import UIExtension
 
 final class SettingsVC: UIViewController {
     

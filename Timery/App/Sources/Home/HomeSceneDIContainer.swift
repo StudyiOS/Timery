@@ -26,6 +26,7 @@ final class HomeSceneDIContainer: HomeFlowCoordinatorDependencies {
      }
      */
     
+    
     func makeHomeFlowCoordinator(
         navigationController: UINavigationController,
         appFlowCoordinator: AppFlowCoordinator
@@ -33,7 +34,7 @@ final class HomeSceneDIContainer: HomeFlowCoordinatorDependencies {
         HomeFlowCoordinator(
             navigationController: navigationController,
             appFlowCoordinator: appFlowCoordinator,
-            dependencies: self
+            homeDependencies: self
         )
     }
     

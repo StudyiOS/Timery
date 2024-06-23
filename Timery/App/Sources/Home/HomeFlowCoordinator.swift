@@ -7,25 +7,26 @@
 
 import UIKit
 import Home
+import Reports
 
 final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
     
     private let navigationController: UINavigationController
-    private let dependencies: HomeFlowCoordinatorDependencies
+    private let homeDependencies: HomeFlowCoordinatorDependencies
     private weak var appFlowCoordinator: AppFlowCoordinator?
     
     init(
         navigationController: UINavigationController,
         appFlowCoordinator: AppFlowCoordinator,
-        dependencies: HomeFlowCoordinatorDependencies
+        homeDependencies: HomeFlowCoordinatorDependencies
     ) {
         self.navigationController = navigationController
         self.appFlowCoordinator = appFlowCoordinator
-        self.dependencies = dependencies
+        self.homeDependencies = homeDependencies
     }
     
     func start() {
-        let vc = dependencies.makeHomeVC(coordinator: self)
+        let vc = homeDependencies.makeHomeVC(coordinator: self)
         navigationController.pushViewController(vc, animated: false)
     }
         
@@ -43,7 +44,10 @@ final class HomeFlowCoordinator: HomeFlowCoordinatorProtocol {
     }
     
     func getReportsVC() -> UIViewController {
-        ReportsVC()
+        guard let appFlowCoordinator else {
+            fatalError("appFlowCoordinator nil")
+        }
+        return appFlowCoordinator.createReportsVC()
     }
     
     func getSettingsVC() -> UIViewController  {

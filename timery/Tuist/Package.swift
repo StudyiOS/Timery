@@ -13,6 +13,8 @@ let package = Package(
     name: "Timery",
     dependencies: [
         .package(path: .baseModulePath + "UI/Home"),
+        .package(path: .baseModulePath + "UI/Reports"),
+        .package(path: .baseModulePath + "UI/UIExtension"),
         .package(path: .baseModulePath + "UI/TestDetail"),
 //        .package(path: .baseModulePath + "Domain/MyDomainModule"),
         .package(path: .baseModulePath + "Core/Entity"),

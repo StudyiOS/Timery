@@ -29,6 +29,8 @@ let project = Project(
     name: "Timery",
     packages: [
         .local(path: .relativeToRoot("Modules/UI/Home")),
+        .local(path: .relativeToRoot("Modules/UI/Reports")),
+        .local(path: .relativeToRoot("Modules/UI/UIExtension")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
         .local(path: .relativeToRoot("Modules/Core/Entity")),
         .local(path: .relativeToRoot("Modules/Core/DatabaseManager")),
@@ -46,6 +48,8 @@ let project = Project(
             resources: ["App/Resources/**"],
             dependencies: [
                 .package(product: "Home"),
+                .package(product: "Reports"),
+                .package(product: "UIExtension"),
                 .package(product: "TestDetail"),
                 .package(product: "DatabaseManager"),
                 .package(product: "Entity"),

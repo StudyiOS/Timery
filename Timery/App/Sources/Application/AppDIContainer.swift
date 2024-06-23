@@ -19,4 +19,8 @@ final class AppDIContainer {
     func makeTestDetailSceneDIContainer() -> TestDetailSceneDIContainer {
         return TestDetailSceneDIContainer()
     }
+    
+    func makeReportsSceneDIContainer() -> ReportsSceneDIContainer {
+        return ReportsSceneDIContainer()
+    }
 }
