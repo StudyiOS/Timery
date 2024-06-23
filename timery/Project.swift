@@ -30,6 +30,9 @@ let project = Project(
     packages: [
         .local(path: .relativeToRoot("Modules/UI/Home")),
         .local(path: .relativeToRoot("Modules/UI/Reports")),
+        .local(path: .relativeToRoot("Modules/UI/TimeEntries")),
+        .local(path: .relativeToRoot("Modules/UI/SavedTimers")),
+        .local(path: .relativeToRoot("Modules/UI/Settings")),
         .local(path: .relativeToRoot("Modules/UI/UIExtension")),
         .local(path: .relativeToRoot("Modules/UI/TestDetail")),
         .local(path: .relativeToRoot("Modules/Core/Entity")),
@@ -49,6 +52,9 @@ let project = Project(
             dependencies: [
                 .package(product: "Home"),
                 .package(product: "Reports"),
+                .package(product: "TimeEntries"),
+                .package(product: "SavedTimers"),
+                .package(product: "Settings"),
                 .package(product: "UIExtension"),
                 .package(product: "TestDetail"),
                 .package(product: "DatabaseManager"),

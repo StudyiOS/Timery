@@ -14,6 +14,9 @@ let package = Package(
     dependencies: [
         .package(path: .baseModulePath + "UI/Home"),
         .package(path: .baseModulePath + "UI/Reports"),
+        .package(path: .baseModulePath + "UI/TimeEntries"),
+        .package(path: .baseModulePath + "UI/SavedTimers"),
+        .package(path: .baseModulePath + "UI/Settings"),
         .package(path: .baseModulePath + "UI/UIExtension"),
         .package(path: .baseModulePath + "UI/TestDetail"),
 //        .package(path: .baseModulePath + "Domain/MyDomainModule"),
